@@ -66,9 +66,15 @@
         </tr>
       </table>
     </div>
+    <div class="rest">
+      <button type="button" id="reset" class="btn btn-danger " onclick="clearTable()"><span
+          style="padding-right: 15px;">Delete All</span><i class='bx bx-reset'></i></button>
+    </div>
     <div class="tva">
-      <p>Prix total HT : <span id="ht">0.00</span> DH</p>
-      <p>TVA (20%) : <span id="tva">0.00</span> DH</p>
+      <p>Prix total HT : <span id="ht">0.00</span> DH</p><span
+        style="height: 30px; width: 3px; background-color: black;"></span>
+      <p>TVA (20%) : <span id="tva">0.00</span> DH</p><span
+        style="height: 30px; width: 3px; background-color: black;"></span>
       <p>Montant TTC : <span id="ttc">0.00</span> DH</p>
 
     </div>
@@ -122,7 +128,14 @@
     document.getElementById("tva").textContent = (totalHt * 0.2).toFixed(2);
     document.getElementById("ttc").textContent = (totalHt + totalHt * 0.2).toFixed(2);
   }
-
+    function clearTable() {
+    var table = document.getElementById("table");
+    var rowCount = table.rows.length;
+    for (var i = rowCount - 1; i > 0; i--) {
+      table.deleteRow(i);
+    }
+    calcultotaux();
+  }
 
   // function calcultotaux() {
   //   let totalHt = 0
